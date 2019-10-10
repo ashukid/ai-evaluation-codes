@@ -7,9 +7,11 @@ import pandas as pd;
 runtime_failures = [];
 from shutil import copyfile;
 
+code_directory=sys.argv[2]
+
 def getnames():
 	curr_dir = os.getcwd();
-	os.chdir(os.path.join(curr_dir,'codes'));
+	os.chdir(os.path.join(curr_dir,code_directory));
 	names = [i for i in os.listdir('.') if os.path.isdir(i)];
 	os.chdir(curr_dir);
 	return names;
@@ -59,6 +61,8 @@ def run(filename,test_input,test_output,lang_type):
 
 	#for java
 	elif(lang_type=="java"):
+
+		compile_cmd="javac "+str(filename)
 		class_file = filename.split("/")[-1].split(".")[0]
 		run_cmd = "timeout 5 java " + str(class_file) +"< "+str(test_input)+" > "+str(output_file);
 	
@@ -74,7 +78,7 @@ def run(filename,test_input,test_output,lang_type):
 		return 0;
 	
 def main(args):
-	n = sys.argv[1];# number of questions
+	n = int(sys.argv[1]);# number of questions
 	tests = 5;# number of testcases
 	names = getnames();
 	partial = [1]*n;
@@ -85,7 +89,7 @@ def main(args):
 			temp.append(0);
 		marks.append(temp);
 	curr_dir = os.getcwd();
-	os.chdir(os.path.join(curr_dir,'codes'));
+	os.chdir(os.path.join(curr_dir,code_directory));
 	code_dir = os.getcwd();
 	for i in range(0,len(names)):#all codes
 		path = os.path.join(code_dir,names[i]);
@@ -95,8 +99,8 @@ def main(args):
 				os.chdir(ques);
 				total = 0;
 				for test in range(0,tests):#all testcases
-					test_input = os.path.join(curr_dir,'testcases/'+str(j+1)+'/in0'+str(test)+'.txt');
-					test_output = os.path.join(curr_dir,'testcases/'+str(j+1)+'/out0'+str(test)+'.txt');
+					test_input = os.path.join(curr_dir,code_directory+'_testcases/'+str(j+1)+'/in0'+str(test)+'.txt');
+					test_output = os.path.join(curr_dir,code_directory+'_testcases/'+str(j+1)+'/out0'+str(test)+'.txt');
 					files = [f for f in os.listdir('.') if os.path.isfile(f)];
 					score = 0;
 					for f in files:
@@ -126,7 +130,7 @@ def main(args):
 		else:
 			for j in range(0,n):
 				final[idx][j+1] = max(final[idx][j+1],marks[i][j+1]);
-	with open("results.csv","w+") as my_csv:
+	with open(code_directory+"_results.csv","w+") as my_csv:
 		writer = csv.writer(my_csv,delimiter=',');
 		writer.writerow(headers);
 		writer.writerows(final);
