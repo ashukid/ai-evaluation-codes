@@ -54,27 +54,11 @@ def run(filename,test_input,test_output,lang_type):
 	# for cpp
 	elif(lang_type=="cpp"):
 
-		# #method to compile on
-		# src="/Users/ashu/ghisai_restart/stdc++.h"
-		# dest=filename.split("/")[:-1]
-		# dest="/".join(dest)
-		# dest=os.path.join(dest,"stdc++.h")
-		# print(src,dest)
-		# copyfile(src,dest);
-
-		# with open(filename,"w") as temp:
-		# 	codefile=temp.read()
-		# 	print(codefile)
-		# 	codefile=codefile.replace("#include<bits/stdc++.h>","#include\"stdc++.h\"")
-		# 	temp.write(codefile)
-
 		compile_cmd = "g++ "+str(filename);
-		print(compile_cmd)
 		run_cmd = "timeout 5 ./a.out < "+str(test_input)+" > "+str(output_file); 
 
 	#for java
 	elif(lang_type=="java"):
-		compile_cmd = "javac "+str(filename);
 		class_file = filename.split("/")[-1].split(".")[0]
 		run_cmd = "timeout 5 java " + str(class_file) +"< "+str(test_input)+" > "+str(output_file);
 	
@@ -90,10 +74,10 @@ def run(filename,test_input,test_output,lang_type):
 		return 0;
 	
 def main(args):
-	n = 5;# number of questions
+	n = sys.argv[1];# number of questions
 	tests = 5;# number of testcases
 	names = getnames();
-	partial = [1,1,1,1,1];
+	partial = [1]*n;
 	marks = [];
 	for i in range(0,len(names)):
 		temp = [names[i]];
@@ -119,7 +103,6 @@ def main(args):
 						if(f[-2:]=='.c' or f[-2:]=='.C'):
 							score = max(score,run(os.path.join(ques,f),test_input,test_output,"c"));
 						elif(f[-4:]=='.cpp' or f[-4:]=='.CPP'):
-							continue
 							score = max(score,run(os.path.join(ques,f),test_input,test_output,"cpp"));
 						elif(f[-3:]=='.py' or f[-3:]=='.PY'):
 							score = max(score,run(os.path.join(ques,f),test_input,test_output,"python"))
