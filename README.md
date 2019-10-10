@@ -12,9 +12,9 @@ assign3/irm2015001/6/q1.c
 
 ### testcases directory structure
 
->testcases/question_no/in{00,01,02...}.txt`         #input
+>testcases/question_no/in{00,01,02,03,04}.txt`         #input
 
->testcases/question_no/out{00,01,02...}.txt`        #output
+>testcases/question_no/out{00,01,02,03,04}.txt`        #output
 
 For example :
 ```
