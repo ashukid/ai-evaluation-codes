@@ -12,9 +12,9 @@ assign3/irm2015001/6/q1.c
 
 ### testcases directory structure
 
->testcases/question_no/in{00,01,02,03,04}.txt`         #input
+>testcases/question_no/in{00,01,02,03,04}.txt         #input
 
->testcases/question_no/out{00,01,02,03,04}.txt`        #output
+>testcases/question_no/out{00,01,02,03,04}.txt        #output
 
 For example :
 ```
@@ -23,3 +23,9 @@ testcases/1/out00.txt
 ```
 
 NOTE : curly braces "{}" means one of them.
+
+
+Command to run the code :
+```
+python3 main.py [no_of_questions_in_the_assignment] [assignment_code_directory_name] [roll_number]
+```
