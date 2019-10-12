@@ -40,7 +40,7 @@ def run(filename,test_input,test_output,lang_type):
 
 	#for python
 	if(lang_type=="python"):
-		run_cmd = "timeout 5 python3 " + str(filename) + "< " + str(test_input)+ "> " + str(output_file)
+		run_cmd = "timeout 50 python3 " + str(filename) + "< " + str(test_input)+ "> " + str(output_file)
 		if(subprocess.call(run_cmd,shell=True)==0):
 			score = compare(output_file,test_input);
 			return score
@@ -51,20 +51,20 @@ def run(filename,test_input,test_output,lang_type):
 	#for c
 	if(lang_type=="c"):
 		compile_cmd = "gcc "+str(filename);
-		run_cmd = "timeout 5 ./a.out < "+str(test_input)+" > "+str(output_file);
+		run_cmd = "timeout 10 ./a.out < "+str(test_input)+" > "+str(output_file);
 
 	# for cpp
 	elif(lang_type=="cpp"):
 
 		compile_cmd = "g++ "+str(filename);
-		run_cmd = "timeout 5 ./a.out < "+str(test_input)+" > "+str(output_file); 
+		run_cmd = "timeout 10 ./a.out < "+str(test_input)+" > "+str(output_file); 
 
 	#for java
 	elif(lang_type=="java"):
 
 		compile_cmd="javac "+str(filename)
 		class_file = filename.split("/")[-1].split(".")[0]
-		run_cmd = "timeout 5 java " + str(class_file) +"< "+str(test_input)+" > "+str(output_file);
+		run_cmd = "timeout 10 java " + str(class_file) +"< "+str(test_input)+" > "+str(output_file);
 	
 	# running commands for c,cpp and java
 	if(subprocess.call(compile_cmd,shell=True)==0):
