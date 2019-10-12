@@ -29,7 +29,7 @@ def run(filename,test_input,test_output,lang_type):
 
 	#for python
 	if(lang_type=="python"):
-		run_cmd = "timeout 10 python3 " + str(filename) + "< " + str(test_input)+ "> " + str(output_file)
+		run_cmd = "timeout 50 python3 " + str(filename) + "< " + str(test_input)+ "> " + str(output_file)
 		if(subprocess.call(run_cmd,shell=True)==0):
 			score = compare(output_file,test_input)
 			return score
