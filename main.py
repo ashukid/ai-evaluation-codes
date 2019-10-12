@@ -31,7 +31,7 @@ def run(filename,test_input,test_output,lang_type):
 	if(lang_type=="python"):
 		run_cmd = "timeout 10 python3 " + str(filename) + "< " + str(test_input)+ "> " + str(output_file)
 		if(subprocess.call(run_cmd,shell=True)==0):
-			score = compare(output_file,test_input)
+			score = compare(output_file,test_output)
 			return score
 		else:
 			runtime_failures.append(filename)
