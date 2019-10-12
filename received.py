@@ -2,15 +2,16 @@ import os;
 import sys;
 
 assign_no=sys.argv[1]
-f = open("assign"+str(assign_no)+".txt","w");
-path = os.path.join(os.getcwd(),'codes');
+assign=sys.argv[2]
+f = open("assign"+str(assign_no)+".csv","w");
+path = os.path.join(os.getcwd(),assign);
 os.chdir(path);
 dirs =  [i for i in os.listdir(".") if os.path.isdir(i)];
 dirs.sort();
 for i in range(0,len(dirs)):
 	roll = os.path.join(path,dirs[i]);
 	os.chdir(roll);
-	line = dirs[i]+" - ";
+	line = dirs[i]+",";
 	present = [];
 	ques = [j for j in os.listdir(".") if os.path.isdir(j)];
 	for q in ques:
