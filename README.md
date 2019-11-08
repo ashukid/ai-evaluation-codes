@@ -25,7 +25,12 @@ testcases/1/out00.txt
 NOTE : curly braces "{}" means one of them.
 
 
-Command to run the code :
+Command to run individual code :
 ```
 python3 main.py [no_of_questions_in_the_assignment] [assignment_code_directory_name] [roll_number]
+```
+
+Command to run all codes :
+```
+python3 run.py [no_of_questions_in_the_assignment] [assignment_code_directory_name] 
 ```

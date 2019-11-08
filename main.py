@@ -53,7 +53,7 @@ def run(filename,test_input,test_output,lang_type):
 
 		compile_cmd="javac "+str(filename)
 		class_file = filename.split("/")[-1].split(".")[0]
-		run_cmd = "timeout 10 java " + str(class_file) +"< "+str(test_input)+" > "+str(output_file)
+		run_cmd = "timeout 20 java " + str(class_file) +"< "+str(test_input)+" > "+str(output_file)
 	
 	# running commands for c,cpp and java
 	if(subprocess.call(compile_cmd,shell=True)==0):
