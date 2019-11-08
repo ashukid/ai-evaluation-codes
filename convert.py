@@ -3,8 +3,8 @@ import sys;
 from shutil import copyfile;
 import shutil
 
-n = int(sys.argv[1]);
-assign=sys.argv[2]
+n = int(sys.argv[1]);#no of questions
+assign=sys.argv[2]# assignment number
 newpath = os.path.join(os.getcwd(),assign+'_converted');
 
 if(os.path.exists(newpath)):
